@@ -1,9 +1,15 @@
 ul {
   display: flex;
   flex-wrap: wrap;
+  width: max-content;
 }
 
 li {
   list-style: none;
   margin: 10px;
+}
+
+.zombieDetails {
+  display: flex;
+  flex-direction: column;
 }
