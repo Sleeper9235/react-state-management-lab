@@ -9,7 +9,20 @@ li {
   margin: 10px;
 }
 
-.zombieDetails {
+#zombieDetails {
   display: flex;
   flex-direction: column;
+}
+
+#imSpecial {
+  margin-top: 10%;
+}
+
+img {
+  box-shadow: 5px 7.5px 7.5px rgb(210, 210, 247);
+  border-radius: 10px;
+}
+
+img:hover {
+  box-shadow: 5px 7.5px 7.5px rgb(223, 166, 252);
 }

@@ -79,6 +79,11 @@ const [zombieFighters, setZombieFighters] = useState([{
   },
 ]);
   
+//Adding strength through reduce()
+// const addToStrength = () => {
+//   setTotalStrength(team.reduce((total, member) => total + i.member.strength, 0))
+// }
+
   const handleAddFighter = (i) => {
   
     if (money >= i.zombie.price) {
@@ -96,8 +101,7 @@ const [zombieFighters, setZombieFighters] = useState([{
     setMoney(money + (i.zombie.price))
     setTotalStrength(totalStrength - i.zombie.strength)
     setTotalAgility(totalAgility - i.zombie.agility)
-    const newTeam = team.filter((zombie, j ) => j !== idx)
-    setTeam(newTeam)
+    setTeam(team.filter((i, index ) => index !== idx))
   }
 
   return (
@@ -114,28 +118,28 @@ const [zombieFighters, setZombieFighters] = useState([{
       <h2>Strength: {totalStrength}</h2>
     </div>
 
-    <div id="totalStrength">
+    <div id="totalAgility">
       <h2>Agility: {totalAgility}</h2>
     </div>
 
     <div id="team">
       <h2>Team:</h2>
+      {team.length === 0 ? <p>Pick some team members!</p> : 
       <ul>
         {team.map((i, idx) =>
         <li key={idx}>
           <img src={i.zombie.img} />
           <h4>{i.zombie.name}</h4>
-          <div id="zombieDetails">
-              <p>Price: {i.zombie.price}
-            <br />
-              Strength: {i.zombie.strength}
-            <br />
-              Agility: {i.zombie.agility}</p>
-          </div>
-          <button onClick={() => handleRemoveFighter(i, idx)}>Sell Fighter</button>
+            <div id="zombieDetails">
+                <span>Price: {i.zombie.price}</span>
+                <span>Strength: {i.zombie.strength}</span>
+                <span >Agility: {i.zombie.agility}</span>
+            </div>
+          <button id="imSpecial" onClick={() => handleRemoveFighter(i, idx)}>Sell Fighter</button>
         </li> 
         )}
       </ul>
+    }
     </div>
 
     <div id="store">
@@ -146,11 +150,9 @@ const [zombieFighters, setZombieFighters] = useState([{
         <img src={zombie.img} />
         <h4>{zombie.name}</h4>
         <div id="zombieDetails">
-            <p>Price: {zombie.price}
-          <br />
-            Strength: {zombie.strength}
-          <br />
-            Agility: {zombie.agility}</p>
+            <span>Price: {zombie.price}</span>
+            <span>Strength: {zombie.strength}</span>
+            <span>Agility: {zombie.agility}</span>
         </div>
         <button onClick={() => handleAddFighter({ zombie })}>Add Fighter</button>
       </li>
